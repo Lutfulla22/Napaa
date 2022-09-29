@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "List of Product";
+}
+
+<div class="row">
+   <tbody>
+   @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text"><b>Title: </b>@item.Title</p>
+                            <p class="card-text"><b>Quantiy: </b>@item.Quantiy</p>
+                            <p class="card-text"><b>Price: </b>@item.Price</p>
+                        </div>
+                         <td class="align-middle">
+                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Details</a>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="bi bi-trash"></i>Delete</a>
+                        </td>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    </tbody>
+     <div class="text-white">
+        <a asp-controller="Product" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Add New </a>
+    </div>
+</div>
