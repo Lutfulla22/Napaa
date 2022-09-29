@@ -32,8 +32,11 @@ namespace Napa.Controllers
                 if (user != null)
                 {
                     await Authenticate(model.Username); // аутентификация
- 
-                    return RedirectToAction("Index", "Product");
+                    if(user.Username == "Admin")
+                    {
+                        return RedirectToAction("Index", "Product");
+                    }
+                    return RedirectToAction("Index", "Products");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }

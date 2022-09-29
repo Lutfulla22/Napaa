@@ -8,10 +8,12 @@ namespace Napa.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _service;
+        private readonly IUserService _user;
 
-        public ProductController(IProductService service)
+        public ProductController(IProductService service, IUserService user)
         {
             _service = service;
+            _user = user;
         }
         public async Task<IActionResult> Index()
         {
@@ -72,7 +74,6 @@ namespace Napa.Controllers
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-
 
     }
 }
